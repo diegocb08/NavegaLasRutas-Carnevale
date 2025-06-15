@@ -29,12 +29,11 @@ function NavBar() {
 
   const handleCategoryChange = (event) => {
     const selectedCategory = event.target.value;
-    if (selectedCategory) {
-      navigate(`/category/${selectedCategory}`);
-    }
-    console.log(selectedCategory);
+
     if (selectedCategory === "todas") {
-      navigate("/");
+      navigate("/"); //
+    } else if (selectedCategory) {
+      navigate(`/category/${selectedCategory}`);
     }
   };
 
