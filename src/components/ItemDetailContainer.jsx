@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { PuffLoader } from "react-spinners";
+import ItemDetail from "./ItemDetail";
 
 function ItemDetailContainer() {
   const [itemDetails, setItemDetails] = useState(null);
@@ -30,35 +31,7 @@ function ItemDetailContainer() {
       getProductDetails(itemId);
     }
   }, [itemId]);
-  return (
-    <div>
-      {itemDetails ? (
-        <div>
-          <h2>{itemDetails.title}</h2>
-          <img src={itemDetails.thumbnail} alt={itemDetails.title} />
-          <p>
-            <strong>Precio:</strong> ${itemDetails.price}
-          </p>
-          <p>
-            <strong>Descripción:</strong> {itemDetails.description}
-          </p>
-          <p>
-            <strong>Categoría:</strong> {itemDetails.category}
-          </p>
-          <p>
-            <strong>Stock:</strong> {itemDetails.stock}
-          </p>
-          <p>
-            <strong>Rating:</strong> {itemDetails.rating}/5
-          </p>
-        </div>
-      ) : (
-        <div>
-          <PuffLoader />
-        </div>
-      )}
-    </div>
-  );
+  return <ItemDetail itemDetails={itemDetails} />;
 }
 
 export default ItemDetailContainer;
