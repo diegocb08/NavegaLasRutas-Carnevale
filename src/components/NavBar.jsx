@@ -1,9 +1,11 @@
 import CartWidget from "./CartWidget";
 import "./NavBar.css";
 import { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function NavBar() {
   const [categories, setCategories] = useState([]);
+  const navigate = useNavigate();
 
   async function getCategories() {
     try {
@@ -25,16 +27,34 @@ function NavBar() {
     getCategories();
   }, []);
 
+  const handleCategoryChange = (event) => {
+    const selectedCategory = event.target.value;
+    if (selectedCategory) {
+      navigate(`/category/${selectedCategory}`);
+    }
+    console.log(selectedCategory);
+    if (selectedCategory === "todas") {
+      navigate("/");
+    }
+  };
+
   return (
     <nav className="nav-container">
-      <h1>E-Commerce</h1>
-      <select className="categorias">
-        <option className="categoria" disabled>
+      <h1>
+        <NavLink to="/">E-Commerce</NavLink>
+      </h1>
+
+      <select
+        className="categorias"
+        onChange={handleCategoryChange}
+        defaultValue=""
+      >
+        <option value="todas" className="categoria">
           Selecciona una categoría
         </option>
-        {categories.map((categorie) => (
-          <option className="categoria" key={categorie} value={categorie}>
-            {categorie}
+        {categories.map((category) => (
+          <option className="categoria" key={category} value={category}>
+            {category}
           </option>
         ))}
       </select>
