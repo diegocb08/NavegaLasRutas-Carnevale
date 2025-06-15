@@ -23,9 +23,16 @@ img {
   justify-items: center;
 }
 
+.itemCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .itemCard img {
   width: 200px;
-  align-items: ;
+  justify-content: center;
+  align-self: center;
 }
 
 .itemCard p {
