@@ -1,39 +1,31 @@
 import "./ItemListContainer.css";
 import { useState, useEffect } from "react";
+import ItemList from "./ItemList";
 
 function ItemListContainer() {
   const [items, setItems] = useState([]);
 
-  useEffect(() => {
+  async function getProducts() {
     try {
-      async function getProducts() {
-        const resp = await fetch("https://dummyjson.com/products");
-        const fetchedData = await resp.json();
+      const resp = await fetch("https://dummyjson.com/products");
+      const fetchedData = await resp.json();
 
-        if (!resp.ok) {
-          throw new Error("Error en la solicitud de datos");
-        }
-
-        setItems(fetchedData.products); //
-        console.log(fetchedData);
+      if (!resp.ok) {
+        throw new Error("Error en la solicitud de datos");
       }
-      getProducts();
+
+      setItems(fetchedData.products); //
+      console.log(fetchedData);
     } catch (error) {
       console.error("Ha ocurrido un error: ", error);
     }
+  }
+
+  useEffect(() => {
+    getProducts();
   }, []);
 
-  return (
-    <div className="itemListContainer">
-      {items.map((item) => (
-        <div key={item.id} className="itemCard">
-          <img src={item.images[0]} alt={"item.title"} />
-          <p>{item.title}</p>
-          <p>Precio: ${item.price}</p>
-        </div>
-      ))}
-    </div>
-  );
+  return <ItemList items={items} />;
 }
 
 export default ItemListContainer;
