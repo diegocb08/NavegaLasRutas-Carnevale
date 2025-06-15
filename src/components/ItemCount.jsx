@@ -1,5 +1,9 @@
 function ItemCount() {
-  return <div>contador</div>;
+  return (
+    <div>
+      <button>Agregar al carrito</button>
+    </div>
+  );
 }
 
 export default ItemCount;

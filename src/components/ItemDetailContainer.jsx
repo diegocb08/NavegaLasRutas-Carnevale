@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { PuffLoader } from "react-spinners";
 import ItemDetail from "./ItemDetail";
 
 function ItemDetailContainer() {

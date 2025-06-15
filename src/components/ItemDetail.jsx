@@ -1,3 +1,6 @@
+import ItemCount from "./ItemCount";
+import { PuffLoader } from "react-spinners";
+
 function ItemDetail({ itemDetails }) {
   return (
     <div>
@@ -20,6 +23,7 @@ function ItemDetail({ itemDetails }) {
           <p>
             <strong>Rating:</strong> {itemDetails.rating}/5
           </p>
+          <ItemCount />
         </div>
       ) : (
         <div>
