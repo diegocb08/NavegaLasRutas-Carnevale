@@ -11,10 +11,10 @@ function ItemListContainer() {
       const fetchedData = await resp.json();
 
       if (!resp.ok) {
-        throw new Error("Error en la solicitud de datos");
+        throw new Error("Error en la solicitud de datos de productos");
       }
 
-      setItems(fetchedData.products); //
+      setItems(fetchedData.products);
       console.log(fetchedData);
     } catch (error) {
       console.error("Ha ocurrido un error: ", error);
