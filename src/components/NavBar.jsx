@@ -17,7 +17,6 @@ function NavBar() {
       }
 
       setCategories(fetchedData);
-      console.log(fetchedData);
     } catch (error) {
       console.error("Ha ocurrido un error: ", error);
     }

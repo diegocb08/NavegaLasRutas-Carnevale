@@ -9,6 +9,7 @@ const ItemListWithLoading = withLoading(ItemList);
 function ItemListContainer() {
   const [items, setItems] = useState([]);
   const { categoryName } = useParams();
+
   async function getCategoryProducts(categoryName) {
     try {
       const resp = await fetch(
@@ -35,6 +36,7 @@ function ItemListContainer() {
     try {
       const resp = await fetch("https://dummyjson.com/products");
       const fetchedData = await resp.json();
+      console.log(fetchedData);
 
       if (!resp.ok) {
         throw new Error(
