@@ -1,6 +1,9 @@
 import "./ItemListContainer.css";
 import { useState, useEffect } from "react";
 import ItemList from "./ItemList";
+import { withLoading } from "../hoc/withLoading";
+
+const ItemListWithLoading = withLoading(ItemList);
 
 function ItemListContainer() {
   const [items, setItems] = useState([]);
@@ -25,7 +28,7 @@ function ItemListContainer() {
     getProducts();
   }, []);
 
-  return <ItemList items={items} />;
+  return <ItemListWithLoading items={items} />;
 }
 
 export default ItemListContainer;
